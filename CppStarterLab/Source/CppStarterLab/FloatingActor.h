@@ -2,9 +2,21 @@
 
 #pragma once
 
+#include <Math/UnrealMathUtility.h>
+#include <math.h>
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "FloatingActor.generated.h"
+
+
+
+UENUM()
+enum Shapes
+{
+	cube	UMETA(DisplayName = "Cube"),
+	pipe	UMETA(DisplayName = "Pipe"),
+	capsule	UMETA(DisplayName = "Capsule")
+};
 
 UCLASS()
 class CPPSTARTERLAB_API AFloatingActor : public AActor
@@ -15,8 +27,14 @@ public:
 	// Sets default values for this actor's properties
 	AFloatingActor();
 	
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FloatingActor")
 		UStaticMeshComponent* VisualMesh;
+
+	UStaticMesh* cube;
+	UStaticMesh* pipe;
+	UStaticMesh* capsule;
+
+	
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,4 +50,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FloatingActor")
 		float RotationSpeed = 20.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FloatingActor")
+		TEnumAsByte<Shapes> meshShapes;
 };

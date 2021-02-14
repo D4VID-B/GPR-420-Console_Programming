@@ -3,6 +3,7 @@
 #include "FPSProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
+#include "ABombActor.h"
 
 AFPSProjectile::AFPSProjectile() 
 {
@@ -39,6 +40,36 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
+		
+
+		if (OtherComp->GetComponentScale().GetMin() < 0.5f)
+		{
+			//Delet the cube:
+			OtherActor->Destroy();
+			
+			//Spawn the bomb:
+			SpawnBomb(OtherActor->GetActorLocation(), OtherActor->GetActorRotation());
+		}
+		else
+		{
+			OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
+		}
+
+		UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
+
+		if (inst)
+		{
+			inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
+		}
+
+
 		Destroy();
 	}
+}
+
+void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
+{
+	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
+
+
 }

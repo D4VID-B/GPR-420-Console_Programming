@@ -9,7 +9,7 @@
 
 class UProjectileMovementComponent;
 class USphereComponent;
-
+class ABombActor;
 
 UCLASS()
 class AFPSProjectile : public AActor
@@ -26,6 +26,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	UProjectileMovementComponent* ProjectileMovement;
 
+
+	void SpawnBomb(FVector loc, FRotator rot);
+
 public:
 
 	AFPSProjectile();
@@ -33,6 +36,9 @@ public:
 	/** called when projectile hits something */
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
+	TSubclassOf<ABombActor> BombClass;
 
 	/** Returns CollisionComp subobject **/
 	USphereComponent* GetCollisionComp() const { return CollisionComp; }

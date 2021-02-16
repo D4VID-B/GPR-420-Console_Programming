@@ -70,6 +70,4 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
 {
 	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
-
-
 }

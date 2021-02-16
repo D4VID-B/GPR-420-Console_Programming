@@ -1,0 +1,4 @@
+﻿  'D:\_Program-Files' is not recognized as an internal or external command,
+  operable program or batch file.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.MakeFile.Targets(46,5): error MSB3073: The command "C:\WINDOWS\System32\chcp.com 65001 >NUL 
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.MakeFile.Targets(46,5): error MSB3073:  D:\_Program-Files(D)\Unreal-Engine\UE_4.26\Engine\Build\BatchFiles\Build.bat CppStarterLabEditor Win64 Development -Project="D:\GPR-420-Console_Programming\CppStarterLab\CppStarterLab.uproject" -WaitMutex -FromMsBuild" exited with code 9009.

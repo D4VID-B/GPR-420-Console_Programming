@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\CppStarterLab.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{B155019C-56E6-446B-834F-C429E1DFDFA9}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\CppStarterLab.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\CppStarterLabEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{1132E19C-25E4-4B32-B7CA-11E561CC0481}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\CppStarterLab">
+      <UniqueIdentifier>{1A1A633E-2101-4472-9AD3-5C1440201D44}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\CppStarterLab\CppStarterLab.Build.cs">
+      <Filter>Source\CppStarterLab</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\CppStarterLab\CppStarterLab.cpp">
+      <Filter>Source\CppStarterLab</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CppStarterLab\CppStarterLab.h">
+      <Filter>Source\CppStarterLab</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CppStarterLab\CppStarterLabGameModeBase.cpp">
+      <Filter>Source\CppStarterLab</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CppStarterLab\CppStarterLabGameModeBase.h">
+      <Filter>Source\CppStarterLab</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CppStarterLab\FloatingActor.cpp">
+      <Filter>Source\CppStarterLab</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CppStarterLab\FloatingActor.h">
+      <Filter>Source\CppStarterLab</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

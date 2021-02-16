@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "FPS_Tutorial",
+			"Path": "D:\\GPR-420-Console_Programming\\FPS_Tutorial\\Source\\FPS_Tutorial.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "FPS_TutorialEditor",
+			"Path": "D:\\GPR-420-Console_Programming\\FPS_Tutorial\\Source\\FPS_TutorialEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

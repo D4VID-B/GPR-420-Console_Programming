@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\FPS_Tutorial.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{CCDB2D28-45AD-4507-B162-B48C22AC8D49}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\FPS_Tutorial.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\FPS_TutorialEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{CC2EF877-ADFC-4742-A408-546F31C1520B}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\FPS_Tutorial">
+      <UniqueIdentifier>{C41A4DBB-D405-4BAC-A6B8-45CC790B190E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\FPS_Tutorial\FPS_Tutorial.Build.cs">
+      <Filter>Source\FPS_Tutorial</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\FPS_Tutorial\FPS_Tutorial.cpp">
+      <Filter>Source\FPS_Tutorial</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPS_Tutorial\FPS_Tutorial.h">
+      <Filter>Source\FPS_Tutorial</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FPS_Tutorial\FPS_TutorialGameModeBase.cpp">
+      <Filter>Source\FPS_Tutorial</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FPS_Tutorial\FPS_TutorialGameModeBase.h">
+      <Filter>Source\FPS_Tutorial</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

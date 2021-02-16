@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-FPS_Tutorial-7628.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\FPS_TutorialEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\UE4Editor\Development\FPS_Tutorial\FPS_Tutorial.cpp.obj"
+"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\UE4Editor\Development\FPS_Tutorial\FPS_TutorialGameModeBase.cpp.obj"
+"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\UE4Editor\Development\FPS_Tutorial\FPS_Tutorial.init.gen.cpp.obj"
+"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\UE4Editor\Development\FPS_Tutorial\FPS_TutorialGameModeBase.gen.cpp.obj"
+"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\UE4Editor\Development\FPS_Tutorial\Default.rc2.res"
+/OUT:"D:\GPR-420-Console_Programming\FPS_Tutorial\Intermediate\Build\Win64\UE4Editor\Development\FPS_Tutorial\UE4Editor-FPS_Tutorial-7628.lib"
+/INCLUDE:IMPLEMENT_MODULE_FPS_Tutorial

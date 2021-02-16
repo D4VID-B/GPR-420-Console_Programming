@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\GPR-420-Console_Programming\\FPS_Tutorial\\Source\\FPS_Tutorial\\FPS_Tutorial.Build.cs",
+		"D:\\GPR-420-Console_Programming\\FPS_Tutorial\\Source\\FPS_Tutorial.Target.cs",
+		"D:\\GPR-420-Console_Programming\\FPS_Tutorial\\Source\\FPS_TutorialEditor.Target.cs"
+	],
+	"EngineVersion": "4.26.0"
+}

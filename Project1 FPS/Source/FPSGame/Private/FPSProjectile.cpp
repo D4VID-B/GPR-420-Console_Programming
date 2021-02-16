@@ -3,7 +3,7 @@
 #include "FPSProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
-#include "ABombActor.h"
+#include "BombActor.h"
 
 AFPSProjectile::AFPSProjectile() 
 {

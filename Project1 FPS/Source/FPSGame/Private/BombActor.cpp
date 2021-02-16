@@ -28,7 +28,7 @@ void ABombActor::BeginPlay()
 	
 
 	FTimerHandle Explode_TimerHandle;
-	GetWorldTimerManager().SetTimer(Explode_TimerHandle, this, ABombActor::Explode, delay);
+	GetWorldTimerManager().SetTimer(Explode_TimerHandle, this, &ABombActor::Explode, delay);
 
 	matInst = mesh->CreateAndSetMaterialInstanceDynamic(0);
 

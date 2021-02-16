@@ -23,13 +23,13 @@ public:
 
 protected:
 
-	UPROPERTY(EditDefaultOnly, Category = "Bomb")
+	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
 	float delay;
 
 	UFUNCTION()
 	void Explode();
 
-	UPROPERTY(EditDefaultOnly, Category = "Bomb")
+	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
 	UParticleSystem* ExplosionTemplate;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")

@@ -10,6 +10,8 @@
 class UProjectileMovementComponent;
 class USphereComponent;
 class ABombActor;
+class AMyCube;
+class UParticleSystem;
 
 UCLASS()
 class AFPSProjectile : public AActor
@@ -28,6 +30,11 @@ protected:
 
 
 	void SpawnBomb(FVector loc, FRotator rot);
+	
+	void SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube);
+
+	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
+		UParticleSystem* CubeExplosion;
 
 public:
 
@@ -40,6 +47,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
 	TSubclassOf<ABombActor> BombClass;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Cube")
+	TSubclassOf<AMyCube> CubeClass;
 	/** Returns CollisionComp subobject **/
 	USphereComponent* GetCollisionComp() const { return CollisionComp; }
 

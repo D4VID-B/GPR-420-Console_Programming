@@ -3,7 +3,9 @@
 #include "FPSProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "BombActor.h"
+#include "MyCube.h"
 
 AFPSProjectile::AFPSProjectile() 
 {
@@ -40,19 +42,31 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
-		
+		/*
+		* prototyping
+		* else
+		* {
+		*	for(int i = 0; i < 4; i++)
+		*	{
+		*		SpawnCube(OtherActor->GetActorLocation, OtherActor->GetActorRotation);
+		*	}
+		*	
+		* }
+		*/
 
-		if (OtherComp->GetComponentScale().GetMin() < 0.5f)
+		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
 		{
 			//Delet the cube:
 			OtherActor->Destroy();
 			
-			//Spawn the bomb:
-			SpawnBomb(OtherActor->GetActorLocation(), OtherActor->GetActorRotation());
+			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 		}
 		else
 		{
-			OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
+			//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
+			OtherActor->Destroy();
+
+			SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
 		}
 
 		UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
@@ -70,4 +84,25 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
 {
 	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
+}
+
+void AFPSProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
+{
+	float scaleValue = 0.5f;
+	scaleOfCube = scaleOfCube.operator*= (scaleValue);
+	FVector newLoc = loc;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (i != 0)
+		{
+			float newX = loc.X + (75.0 * i);
+			float newY = loc.Y + (75.0 * i);
+			float newZ = loc.Z + (25.0 * i);
+			newLoc = FVector(newX,newY,newZ);
+		}
+		AMyCube* cube = GetWorld()->SpawnActor<AMyCube>(CubeClass, newLoc, rot);
+		cube->SetActorScale3D(scaleOfCube);
+	}
+	
 }

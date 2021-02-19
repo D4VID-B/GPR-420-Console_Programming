@@ -36,9 +36,14 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
 		UParticleSystem* CubeExplosion;
 
+	UPROPERTY(VisibleAnywhere, Category = "Explosion")
+		bool IsCharged;
+
 public:
 
 	AFPSProjectile();
+
+	AFPSProjectile(bool isCharged);
 
 	/** called when projectile hits something */
 	UFUNCTION()

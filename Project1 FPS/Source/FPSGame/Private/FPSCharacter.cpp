@@ -94,24 +94,32 @@ void AFPSCharacter::SpawnBomb()
 	ABombActor* MyBomb = GetWorld()->SpawnActor<ABombActor>(BombClass, GetActorLocation(), GetActorRotation());
 }
 
-void AFPSCharacter::Tick(float DeltaTime)
-{
-	if (isCharging)
-	{
-
-	}
-}
+//void AFPSCharacter::Tick(float DeltaTime)
+//{
+//	if (isCharging)
+//	{
+//		ChargeAmount += DeltaTime;
+//	}
+//}
 
 void AFPSCharacter::ChargeAttack()
 {
+	
 	//Tick for duration of chargeTime
 	//If after chargeTime == 0 the Fire() button is presse, fire the charged attack
 	//Else do nothing?
 
 	//After firing, do the cooldown
+	
+	FTimerHandle ChargeupTimer;
+	GetWorldTimerManager().SetTimer(ChargeupTimer, this, &AFPSCharacter::FireCharged, ChargeTime);
 
+	isCharged = true;
+}
 
-	isCharging = true;
+void AFPSCharacter::FireCharged()
+{
+	
 }
 
 void AFPSCharacter::MoveForward(float Value)

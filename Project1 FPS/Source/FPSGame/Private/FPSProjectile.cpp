@@ -34,31 +34,58 @@ AFPSProjectile::AFPSProjectile()
 	InitialLifeSpan = 3.0f;
 }
 
+AFPSProjectile::AFPSProjectile(bool isCharged)
+	:AFPSProjectile()
+{
+	
+	CollisionComp->InitSphereRadius(10.0f);
+	
+	ProjectileMovement->InitialSpeed = 5000.f;
+	ProjectileMovement->MaxSpeed = 5000.f;
+
+	InitialLifeSpan = 5.0f;
+
+	IsCharged = isCharged;
+}
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-
-	//if this was a charged shot, we blow up the cube and return
-	//if this wasn't a charge attack, then we just do the normal stuff
-
-
-
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
-		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+		//if this was a charged shot, we blow up the cube and return
+		//if this wasn't a charge attack, then we just do the normal stuff
+		if (IsCharged)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 
-		/*
-		* prototyping
-		* else
-		* {
-		*	for(int i = 0; i < 4; i++)
-		*	{
-		*		SpawnCube(OtherActor->GetActorLocation, OtherActor->GetActorRotation);
-		*	}
-		*	
-		* }
-		*/
+			FCollisionObjectQueryParams params;
+			params.AddObjectTypesToQuery(ECC_WorldDynamic);
+			params.AddObjectTypesToQuery(ECC_PhysicsBody);
+
+
+			FCollisionShape shape;
+			shape.SetSphere(500.0f);
+
+			TArray<FOverlapResult> overlaps;
+
+			GetWorld()->OverlapMultiByObjectType(overlaps, GetActorLocation(), FQuat::Identity, params, shape);
+
+			for (FOverlapResult result : overlaps)
+			{
+
+				result.GetActor()->Destroy();
+
+				/*UPrimitiveComponent* overlap = result.GetComponent();
+				if (overlap && overlap->IsSimulatingPhysics())
+				{
+					
+				}*/
+			}
+		}
+
+
+		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
 		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
 		{

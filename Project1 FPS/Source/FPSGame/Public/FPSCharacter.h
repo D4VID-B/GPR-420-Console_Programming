@@ -35,11 +35,7 @@ protected:
 	UCameraComponent* CameraComponent;
 
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Bomb")
-	bool isCharging;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Bomb")
-	float ChargeAmount;
 
 public:
 	AFPSCharacter();
@@ -55,7 +51,10 @@ public:
 	float CooldownTime = 3.0f;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
-	float ChargeAmount = 100.0f;
+	float ChargeTime = 3.0f;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Bomb")
+	bool isCharged;
 
 	/** Sound to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, Category="Gameplay")
@@ -74,6 +73,8 @@ protected:
 	void SpawnBomb();
 
 	void ChargeAttack();
+
+	void FireCharged();
 
 	virtual void Tick(float DeltaTime);
 //____________New Stuff____________///

@@ -37,6 +37,12 @@ AFPSProjectile::AFPSProjectile()
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+
+	//if this was a charged shot, we blow up the cube and return
+	//if this wasn't a charge attack, then we just do the normal stuff
+
+
+
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{

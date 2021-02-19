@@ -29,6 +29,8 @@ AFPSCharacter::AFPSCharacter()
 	GunMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FP_Gun"));
 	GunMeshComponent->CastShadow = false;
 	GunMeshComponent->SetupAttachment(Mesh1PComponent, "GripPoint");
+
+	isCharging = false;
 }
 
 
@@ -41,6 +43,7 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
 
 	PlayerInputComponent->BindAction("SpawnBomb", IE_Pressed, this, &AFPSCharacter::SpawnBomb);
+	PlayerInputComponent->BindAction("ChargeAttack", IE_Pressed, this, &AFPSCharacter::ChargeAttack);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFPSCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFPSCharacter::MoveRight);
@@ -91,6 +94,25 @@ void AFPSCharacter::SpawnBomb()
 	ABombActor* MyBomb = GetWorld()->SpawnActor<ABombActor>(BombClass, GetActorLocation(), GetActorRotation());
 }
 
+void AFPSCharacter::Tick(float DeltaTime)
+{
+	if (isCharging)
+	{
+
+	}
+}
+
+void AFPSCharacter::ChargeAttack()
+{
+	//Tick for duration of chargeTime
+	//If after chargeTime == 0 the Fire() button is presse, fire the charged attack
+	//Else do nothing?
+
+	//After firing, do the cooldown
+
+
+	isCharging = true;
+}
 
 void AFPSCharacter::MoveForward(float Value)
 {

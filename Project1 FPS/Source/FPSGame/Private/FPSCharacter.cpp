@@ -2,6 +2,7 @@
 
 #include "FPSCharacter.h"
 #include "FPSProjectile.h"
+#include "ChargeProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -30,7 +31,7 @@ AFPSCharacter::AFPSCharacter()
 	GunMeshComponent->CastShadow = false;
 	GunMeshComponent->SetupAttachment(Mesh1PComponent, "GripPoint");
 
-	//isCharging = false;
+
 }
 
 
@@ -104,22 +105,66 @@ void AFPSCharacter::Tick(float DeltaTime)
 
 void AFPSCharacter::ChargeAttack()
 {
-	
 	//Tick for duration of chargeTime
 	//If after chargeTime == 0 the Fire() button is presse, fire the charged attack
 	//Else do nothing?
 
 	//After firing, do the cooldown
-	
-	FTimerHandle ChargeupTimer;
-	GetWorldTimerManager().SetTimer(ChargeupTimer, this, &AFPSCharacter::FireCharged, ChargeTime);
+	if (isCharged)
+	{
+		FTimerHandle ChargeupTimer;
+		GetWorldTimerManager().SetTimer(ChargeupTimer, this, &AFPSCharacter::FireCharged, ChargeTime);
+	}
+	else
+	{
+		FTimerHandle RechargeTimer;
+		GetWorldTimerManager().SetTimer(RechargeTimer, this, &AFPSCharacter::ReCharge, CooldownTime);
+	}
 
-	isCharged = true;
 }
 
 void AFPSCharacter::FireCharged()
 {
-	
+	// try and fire a projectile
+	if (ChargedProjectileClass)
+	{
+		// Grabs location from the mesh that must have a socket called "Muzzle" in his skeleton
+		FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");
+		// Use controller rotation which is our view direction in first person
+		FRotator MuzzleRotation = GetControlRotation();
+
+		//Set Spawn Collision Handling Override
+		FActorSpawnParameters ActorSpawnParams;
+		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+
+		// spawn the projectile at the muzzle
+		GetWorld()->SpawnActor<AChargedProjectile>(ChargedProjectileClass, MuzzleLocation, MuzzleRotation, ActorSpawnParams);
+	}
+
+	// try and play the sound if specified
+	if (FireSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+	}
+
+	// try and play a firing animation if specified
+	if (FireAnimation)
+	{
+		// Get the animation object for the arms mesh
+		UAnimInstance* AnimInstance = Mesh1PComponent->GetAnimInstance();
+		if (AnimInstance)
+		{
+			AnimInstance->PlaySlotAnimationAsDynamicMontage(FireAnimation, "Arms", 0.0f);
+		}
+	}
+
+	isCharged = false;
+}
+
+
+void AFPSCharacter::ReCharge()
+{
+	isCharged = true;
 }
 
 void AFPSCharacter::MoveForward(float Value)

@@ -14,7 +14,7 @@ AChargeProjectile::AChargeProjectile()
 {
 	// Use a sphere as a simple collision representation
 	CollisionComp = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
-	CollisionComp->InitSphereRadius(5.0f);
+	CollisionComp->InitSphereRadius(10.0f);
 	CollisionComp->SetCollisionProfileName("Projectile");
 	CollisionComp->OnComponentHit.AddDynamic(this, &AChargeProjectile::OnHit);	// set up a notification for when this component hits something blocking
 
@@ -28,27 +28,17 @@ AChargeProjectile::AChargeProjectile()
 	// Use a ProjectileMovementComponent to govern this projectile's movement
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComp"));
 	ProjectileMovement->UpdatedComponent = CollisionComp;
-	ProjectileMovement->InitialSpeed = 3000.f;
-	ProjectileMovement->MaxSpeed = 3000.f;
+	ProjectileMovement->InitialSpeed = 5000.f;
+	ProjectileMovement->MaxSpeed = 5000.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = true;
 
 	// Die after 3 seconds by default
-	InitialLifeSpan = 3.0f;
-
-}
-AChargeProjectile::AChargeProjectile(bool isCharged)//:AChargeProjectile()
-{
-
-	CollisionComp->InitSphereRadius(10.0f);
-
-	ProjectileMovement->InitialSpeed = 5000.f;
-	ProjectileMovement->MaxSpeed = 5000.f;
-
 	InitialLifeSpan = 5.0f;
 
-	IsCharged = isCharged;
 }
+
+
 // Called when the game starts or when spawned
 void AChargeProjectile::BeginPlay()
 {
@@ -71,8 +61,7 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 	{
 		//if this was a charged shot, we blow up the cube and return
 		//if this wasn't a charge attack, then we just do the normal stuff
-		if (IsCharged)
-		{
+		
 			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 
 			FCollisionObjectQueryParams params;
@@ -98,32 +87,32 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 
 				}*/
 			}
-		}
+		
 
 
-		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+		//OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
-		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
-		{
-			//Delet the cube:
-			OtherActor->Destroy();
+		//if (OtherComp->GetComponentScale().GetMin() < 1.26f)
+		//{
+		//	//Delet the cube:
+		//	OtherActor->Destroy();
 
-			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
-		}
-		else
-		{
-			//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
-			OtherActor->Destroy();
+		//	UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
+		//}
+		//else
+		//{
+		//	//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
+		//	OtherActor->Destroy();
 
-			SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
-		}
+		//	SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
+		//}
 
-		UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
+		//UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
 
-		if (inst)
-		{
-			inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
-		}
+		//if (inst)
+		//{
+		//	inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
+		//}
 
 
 		Destroy();

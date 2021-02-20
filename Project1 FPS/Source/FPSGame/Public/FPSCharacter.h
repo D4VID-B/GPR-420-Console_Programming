@@ -13,6 +13,7 @@ class AFPSProjectile;
 class USoundBase;
 class UAnimSequence;
 class ABombActor;
+class AChargedProjectile;
 
 
 UCLASS()
@@ -44,16 +45,22 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Projectile")
 	TSubclassOf<AFPSProjectile> ProjectileClass;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Charged Projectile")
+	TSubclassOf<AChargedProjectile> ChargedProjectileClass;
+
+	
 	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
 	TSubclassOf<ABombActor> BombClass;
 
-	UPROPERTY(EditDefaultsOnly, Category = "NewProjectile")
+
+
+	UPROPERTY(EditDefaultsOnly, Category = "Charged Projectile")
 	float CooldownTime = 3.0f;
 
-	UPROPERTY(EditDefaultsOnly, Category = "NewProjectile")
+	UPROPERTY(EditDefaultsOnly, Category = "Charged Projectile")
 	float ChargeTime = 3.0f;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "NewProjectile")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Charged Projectile")
 	bool isCharged;
 
 	/** Sound to play each time we fire */
@@ -77,6 +84,8 @@ protected:
 	void ChargeAttack();
 
 	void FireCharged();
+
+	void ReCharge();
 
 	/*virtual void Tick(float DeltaTime);*/
 //____________New Stuff____________///

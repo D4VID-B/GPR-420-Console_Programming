@@ -22,7 +22,6 @@ public:
 	// Sets default values for this actor's properties
 	AChargeProjectile();
 
-	AChargeProjectile(bool isCharged);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

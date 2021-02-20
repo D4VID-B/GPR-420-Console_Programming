@@ -1,5 +1,7 @@
-// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
+// Fill out your copyright notice in the Description page of Project Settings.
 
+
+#include "ChargeProjectile.h"
 #include "FPSProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
@@ -7,13 +9,14 @@
 #include "BombActor.h"
 #include "MyCube.h"
 
-AFPSProjectile::AFPSProjectile()
+// Sets default values
+AChargeProjectile::AChargeProjectile()
 {
 	// Use a sphere as a simple collision representation
 	CollisionComp = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
 	CollisionComp->InitSphereRadius(5.0f);
 	CollisionComp->SetCollisionProfileName("Projectile");
-	CollisionComp->OnComponentHit.AddDynamic(this, &AFPSProjectile::OnHit);	// set up a notification for when this component hits something blocking
+	CollisionComp->OnComponentHit.AddDynamic(this, &AChargeProjectile::OnHit);	// set up a notification for when this component hits something blocking
 
 	// Players can't walk on it
 	CollisionComp->SetWalkableSlopeOverride(FWalkableSlopeOverride(WalkableSlope_Unwalkable, 0.f));
@@ -32,27 +35,73 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
+}
+AChargeProjectile::AChargeProjectile(bool isCharged)//:AChargeProjectile()
+{
+
+	CollisionComp->InitSphereRadius(10.0f);
+
+	ProjectileMovement->InitialSpeed = 5000.f;
+	ProjectileMovement->MaxSpeed = 5000.f;
+
+	InitialLifeSpan = 5.0f;
+
+	IsCharged = isCharged;
+}
+// Called when the game starts or when spawned
+void AChargeProjectile::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AChargeProjectile::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
 }
 
 
-void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
-		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+		//if this was a charged shot, we blow up the cube and return
+		//if this wasn't a charge attack, then we just do the normal stuff
+		if (IsCharged)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 
-		/*
-		* prototyping
-		* else
-		* {
-		*	for(int i = 0; i < 4; i++)
-		*	{
-		*		SpawnCube(OtherActor->GetActorLocation, OtherActor->GetActorRotation);
-		*	}
-		*
-		* }
-		*/
+			FCollisionObjectQueryParams params;
+			params.AddObjectTypesToQuery(ECC_WorldDynamic);
+			params.AddObjectTypesToQuery(ECC_PhysicsBody);
+
+
+			FCollisionShape shape;
+			shape.SetSphere(500.0f);
+
+			TArray<FOverlapResult> overlaps;
+
+			GetWorld()->OverlapMultiByObjectType(overlaps, GetActorLocation(), FQuat::Identity, params, shape);
+
+			for (FOverlapResult result : overlaps)
+			{
+
+				result.GetActor()->Destroy();
+
+				/*UPrimitiveComponent* overlap = result.GetComponent();
+				if (overlap && overlap->IsSimulatingPhysics())
+				{
+
+				}*/
+			}
+		}
+
+
+		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
 		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
 		{
@@ -81,12 +130,12 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	}
 }
 
-void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
+void AChargeProjectile::SpawnBomb(FVector loc, FRotator rot)
 {
 	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
 }
 
-void AFPSProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
+void AChargeProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
 {
 	float scaleValue = 0.5f;
 	scaleOfCube = scaleOfCube.operator*= (scaleValue);

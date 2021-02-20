@@ -30,7 +30,7 @@ AFPSCharacter::AFPSCharacter()
 	GunMeshComponent->CastShadow = false;
 	GunMeshComponent->SetupAttachment(Mesh1PComponent, "GripPoint");
 
-	isCharging = false;
+	//isCharging = false;
 }
 
 
@@ -94,13 +94,13 @@ void AFPSCharacter::SpawnBomb()
 	ABombActor* MyBomb = GetWorld()->SpawnActor<ABombActor>(BombClass, GetActorLocation(), GetActorRotation());
 }
 
-//void AFPSCharacter::Tick(float DeltaTime)
-//{
-//	if (isCharging)
-//	{
-//		ChargeAmount += DeltaTime;
-//	}
-//}
+void AFPSCharacter::Tick(float DeltaTime)
+{
+	/*if (isCharging)
+	{
+		ChargeAmount += DeltaTime;
+	}*/
+}
 
 void AFPSCharacter::ChargeAttack()
 {

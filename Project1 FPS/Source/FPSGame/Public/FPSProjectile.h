@@ -21,39 +21,34 @@ class AFPSProjectile : public AActor
 protected:
 
 	/** Sphere collision component */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Projectile")
-	USphereComponent* CollisionComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Projectile")
+		USphereComponent* CollisionComp;
 
 	/** Projectile movement component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
-	UProjectileMovementComponent* ProjectileMovement;
+		UProjectileMovementComponent* ProjectileMovement;
 
 
 	void SpawnBomb(FVector loc, FRotator rot);
-	
+
 	void SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
 		UParticleSystem* CubeExplosion;
 
-	UPROPERTY(VisibleAnywhere, Category = "Explosion")
-		bool IsCharged;
-
 public:
 
 	AFPSProjectile();
 
-	AFPSProjectile(bool isCharged);
-
 	/** called when projectile hits something */
 	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+		void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
-	TSubclassOf<ABombActor> BombClass;
+		TSubclassOf<ABombActor> BombClass;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Cube")
-	TSubclassOf<AMyCube> CubeClass;
+		TSubclassOf<AMyCube> CubeClass;
 	/** Returns CollisionComp subobject **/
 	USphereComponent* GetCollisionComp() const { return CollisionComp; }
 

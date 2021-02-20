@@ -47,13 +47,13 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
 	TSubclassOf<ABombActor> BombClass;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
+	UPROPERTY(EditDefaultsOnly, Category = "NewProjectile")
 	float CooldownTime = 3.0f;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
+	UPROPERTY(EditDefaultsOnly, Category = "NewProjectile")
 	float ChargeTime = 3.0f;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Bomb")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "NewProjectile")
 	bool isCharged;
 
 	/** Sound to play each time we fire */
@@ -63,6 +63,8 @@ public:
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, Category = "Gameplay")
 	UAnimSequence* FireAnimation;
+
+	virtual void Tick(float DeltaTime) override;
 
 protected:
 	
@@ -76,7 +78,7 @@ protected:
 
 	void FireCharged();
 
-	virtual void Tick(float DeltaTime);
+	/*virtual void Tick(float DeltaTime);*/
 //____________New Stuff____________///
 
 

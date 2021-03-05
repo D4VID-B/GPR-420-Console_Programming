@@ -59,8 +59,6 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
-		//if this was a charged shot, we blow up the cube and return
-		//if this wasn't a charge attack, then we just do the normal stuff
 		
 			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 
@@ -81,38 +79,7 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 
 				result.GetActor()->Destroy();
 
-				/*UPrimitiveComponent* overlap = result.GetComponent();
-				if (overlap && overlap->IsSimulatingPhysics())
-				{
-
-				}*/
 			}
-		
-
-
-		//OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
-
-		//if (OtherComp->GetComponentScale().GetMin() < 1.26f)
-		//{
-		//	//Delet the cube:
-		//	OtherActor->Destroy();
-
-		//	UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
-		//}
-		//else
-		//{
-		//	//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
-		//	OtherActor->Destroy();
-
-		//	SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
-		//}
-
-		//UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
-
-		//if (inst)
-		//{
-		//	inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
-		//}
 
 
 		Destroy();

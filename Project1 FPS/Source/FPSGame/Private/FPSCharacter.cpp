@@ -43,11 +43,8 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
 
-	PlayerInputComponent->BindAction("SpawnBomb", IE_Pressed, this, &AFPSCharacter::SpawnBomb);
+	//PlayerInputComponent->BindAction("SpawnBomb", IE_Pressed, this, &AFPSCharacter::SpawnBomb);
 	PlayerInputComponent->BindAction("ChargeAttack", IE_Pressed, this, &AFPSCharacter::FireCharged);
-
-	//could make a change to do this?
-	//PlayerInputComponent->BindAction("ChargeAttack", IE_Released, this, &AFPSCharacter::FireCharged);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFPSCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFPSCharacter::MoveRight);
@@ -100,25 +97,18 @@ void AFPSCharacter::SpawnBomb()
 
 void AFPSCharacter::Tick(float DeltaTime)
 {
-	if (GetWorld()->GetFirstPlayerController()->GetInputKeyTimeDown(FKey("LeftShift")) >= ChargeTime && isOffCooldown)
+	if (GetWorld()->GetFirstPlayerController()->GetInputKeyTimeDown(FKey("RightMouseButton")) >= ChargeTime && isOffCooldown)
 	{
 		canFire = true;
 		FireCharged();
 		CoolDown();
-		/*TotalChargeTime += DeltaTime;
-		if (TotalChargeTime >= ChargeTime && GetWorld()->GetFirstPlayerController()->WasInputKeyJustReleased(FKey("LeftShift")))
-		{
-			
-		}*/
+		
 	}
 	else
 	{
 		TotalChargeTime = 0.0f;
 	}
-	/*if (isCharging)
-	{
-		ChargeAmount += DeltaTime;
-	}*/
+	
 }
 
 void AFPSCharacter::CoolDown()
@@ -126,17 +116,13 @@ void AFPSCharacter::CoolDown()
 	//Tick for duration of chargeTime
 	//If after chargeTime == 0 the Fire() button is presse, fire the charged attack
 	//Else do nothing?
-
-	//After firing, do the cooldown
-	//if (isCharged)
-	//{
-	//	FTimerHandle ChargeupTimer;
-	//	GetWorldTimerManager().SetTimer(ChargeupTimer, this, &AFPSCharacter::FireCharged, ChargeTime);
-	//}
 	FTimerHandle RechargeTimer;
 	GetWorldTimerManager().SetTimer(RechargeTimer, this, &AFPSCharacter::ReCharge, CooldownTime);
 
-
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-420, CooldownTime, FColor::Yellow, TEXT("On Cooldown!"));
+	}
 }
 
 void AFPSCharacter::FireCharged()

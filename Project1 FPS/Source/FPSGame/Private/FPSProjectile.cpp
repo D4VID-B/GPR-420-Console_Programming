@@ -42,18 +42,6 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
-		/*
-		* prototyping
-		* else
-		* {
-		*	for(int i = 0; i < 4; i++)
-		*	{
-		*		SpawnCube(OtherActor->GetActorLocation, OtherActor->GetActorRotation);
-		*	}
-		*
-		* }
-		*/
-
 		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
 		{
 			//Delet the cube:
@@ -63,7 +51,6 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		}
 		else
 		{
-			//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
 			OtherActor->Destroy();
 
 			SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());

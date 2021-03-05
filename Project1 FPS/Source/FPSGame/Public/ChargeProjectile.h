@@ -34,10 +34,6 @@ protected:
 		UProjectileMovementComponent* ProjectileMovement;
 
 
-	void SpawnBomb(FVector loc, FRotator rot);
-
-	void SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube);
-
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
 		UParticleSystem* CubeExplosion;
 
@@ -51,11 +47,9 @@ public:
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
-		TSubclassOf<ABombActor> BombClass;
+	UFUNCTION()
+		void DestroyInRadius(float radius);
 
-	UPROPERTY(EditDefaultsOnly, Category = "Cube")
-		TSubclassOf<AMyCube> CubeClass;
 	/** Returns CollisionComp subobject **/
 	USphereComponent* GetCollisionComp() const { return CollisionComp; }
 

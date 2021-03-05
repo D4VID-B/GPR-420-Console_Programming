@@ -33,7 +33,7 @@ AChargeProjectile::AChargeProjectile()
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = true;
 
-	// Die after 3 seconds by default
+	// Die after 5 seconds by default
 	InitialLifeSpan = 5.0f;
 
 }
@@ -60,54 +60,41 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
 		
-			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
+		FTimerHandle Timer;
+		FTimerDelegate d_Timer;
 
-			FCollisionObjectQueryParams params;
-			params.AddObjectTypesToQuery(ECC_WorldDynamic);
-			params.AddObjectTypesToQuery(ECC_PhysicsBody);
+		float explosionRadius = 500.0f;
 
+		d_Timer.BindUFunction(this, FName("DestroyInRadius"), explosionRadius);
 
-			FCollisionShape shape;
-			shape.SetSphere(500.0f);
-
-			TArray<FOverlapResult> overlaps;
-
-			GetWorld()->OverlapMultiByObjectType(overlaps, GetActorLocation(), FQuat::Identity, params, shape);
-
-			for (FOverlapResult result : overlaps)
-			{
-
-				result.GetActor()->Destroy();
-
-			}
-
+		GetWorld()->GetTimerManager().SetTimer(Timer, d_Timer, 5, false);
 
 		Destroy();
 	}
 }
 
-void AChargeProjectile::SpawnBomb(FVector loc, FRotator rot)
-{
-	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
-}
 
-void AChargeProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
+void AChargeProjectile::DestroyInRadius(float radius)
 {
-	float scaleValue = 0.5f;
-	scaleOfCube = scaleOfCube.operator*= (scaleValue);
-	FVector newLoc = loc;
+	FCollisionObjectQueryParams params;
+	params.AddObjectTypesToQuery(ECC_WorldDynamic);
+	params.AddObjectTypesToQuery(ECC_PhysicsBody);
 
-	for (int i = 0; i < 4; i++)
+
+	FCollisionShape shape;
+	shape.SetSphere(radius);
+
+	TArray<FOverlapResult> overlaps;
+
+	GetWorld()->OverlapMultiByObjectType(overlaps, GetActorLocation(), FQuat::Identity, params, shape);
+
+
+
+	for (FOverlapResult result : overlaps)
 	{
-		if (i != 0)
-		{
-			float newX = loc.X + (75.0 * i);
-			float newY = loc.Y + (75.0 * i);
-			float newZ = loc.Z + (25.0 * i);
-			newLoc = FVector(newX, newY, newZ);
-		}
-		AMyCube* cube = GetWorld()->SpawnActor<AMyCube>(CubeClass, newLoc, rot);
-		cube->SetActorScale3D(scaleOfCube);
-	}
+		UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, result.GetActor()->GetActorLocation());
+		result.GetActor()->SetActorScale3D(FVector(2, 2, 2));
+		//result.GetActor()->Destroy();
 
+	}
 }

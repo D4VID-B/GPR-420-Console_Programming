@@ -63,26 +63,32 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 		FTimerHandle Timer;
 		FTimerDelegate d_Timer;
 
-		float explosionRadius = 500.0f;
+		
 
-		d_Timer.BindUFunction(this, FName("DestroyInRadius"), explosionRadius);
+		d_Timer.BindUFunction(this, FName("DestroyInRadius"));
+
+		//d_Timer.b (this, FName("DestroyInRadius"), explosionRadius);
 
 		GetWorld()->GetTimerManager().SetTimer(Timer, d_Timer, 5, false);
+
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Timer finished!", false);
 
 		Destroy();
 	}
 }
 
 
-void AChargeProjectile::DestroyInRadius(float radius)
+void AChargeProjectile::DestroyInRadius(/*float radius*/)
 {
+	float explosionRadius = 500.0f;
+
 	FCollisionObjectQueryParams params;
 	params.AddObjectTypesToQuery(ECC_WorldDynamic);
 	params.AddObjectTypesToQuery(ECC_PhysicsBody);
 
 
 	FCollisionShape shape;
-	shape.SetSphere(radius);
+	shape.SetSphere(explosionRadius);
 
 	TArray<FOverlapResult> overlaps;
 

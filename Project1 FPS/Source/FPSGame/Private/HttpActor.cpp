@@ -31,7 +31,7 @@ void AHttpActor::MyHttpCall()
 	TSharedRef<IHttpRequest,ESPMode::ThreadSafe> Request = Http->CreateRequest();
 	Request->OnProcessRequestComplete().BindUObject(this, &AHttpActor::OnResponseReceived);
 	//This is the url on which to process the request
-	Request->SetURL("https://www.quackit.com/json/tutorial/artists.txt");
+	Request->SetURL("https://api.weather.gov/gridpoints/BTV/88,56/forecast");
 	Request->SetVerb("GET");
 	Request->SetHeader(TEXT("User-Agent"), "X-UnrealEngine-Agent");
 	Request->SetHeader("Content-Type", TEXT("application/json"));
@@ -50,11 +50,11 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 	if (FJsonSerializer::Deserialize(Reader, JsonObject))
 	{
 		//Get the value of the json object by field name
-		TArray<TSharedPtr<FJsonValue>> objArray = JsonObject->GetArrayField("artists");
+		TArray<TSharedPtr<FJsonValue>> objArray = JsonObject->GetArrayField("periods");
 		for (int32 i = 0; i < objArray.Num(); i++)
 		{
-			FString artist = objArray[i]->AsObject()->GetStringField(TEXT("artistname"));
-			GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Green, artist);
+			FString artist = objArray[i]->AsObject()->GetStringField(TEXT("temperature"));
+			GEngine->AddOnScreenDebugMessage(1 + i, 2.0f, FColor::Green, artist);
 		}
 		//int32 recievedInt = JsonObject->GetIntegerField(objArray[0]->AsString());
 

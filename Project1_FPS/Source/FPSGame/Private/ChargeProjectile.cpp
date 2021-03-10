@@ -59,28 +59,32 @@ void AChargeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
+		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Hit!", false);
+
+		hitPos = this->GetActorLocation();
+
+		FTimerHandle MyTimer;
+		FTimerDelegate destroyCubes;
 		
-		FTimerHandle Timer;
-		FTimerDelegate d_Timer;
+		float randomSize = FMath::FRandRange(.06, .2);
 
-		
+		//The faster we go, the bigger the boom
+		mExplosionRadius = this->GetVelocity().Size() * randomSize;
 
-		d_Timer.BindUFunction(this, FName("DestroyInRadius"));
 
-		//d_Timer.b (this, FName("DestroyInRadius"), explosionRadius);
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::Printf(TEXT("Radius will be: %f"), mExplosionRadius), false);
 
-		GetWorld()->GetTimerManager().SetTimer(Timer, d_Timer, 5, false);
+		destroyCubes.BindUFunction(this, FName("DestroyInRadius"), mExplosionRadius);
 
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Timer finished!", false);
-
-		Destroy();
+		//Timer length can't exeed lifetime of projectile!
+		GetWorld()->GetTimerManager().SetTimer(MyTimer, destroyCubes, 4, false);
 	}
 }
 
 
-void AChargeProjectile::DestroyInRadius(/*float radius*/)
+void AChargeProjectile::DestroyInFixedRadius()
 {
-	float explosionRadius = 500.0f;
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Timer finished!", false);
 
 	FCollisionObjectQueryParams params;
 	params.AddObjectTypesToQuery(ECC_WorldDynamic);
@@ -88,19 +92,44 @@ void AChargeProjectile::DestroyInRadius(/*float radius*/)
 
 
 	FCollisionShape shape;
-	shape.SetSphere(explosionRadius);
+	shape.SetSphere(mExplosionRadius);
 
 	TArray<FOverlapResult> overlaps;
 
-	GetWorld()->OverlapMultiByObjectType(overlaps, GetActorLocation(), FQuat::Identity, params, shape);
+	GetWorld()->OverlapMultiByObjectType(overlaps, hitPos, FQuat::Identity, params, shape);
 
 
 
 	for (FOverlapResult result : overlaps)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, result.GetActor()->GetActorLocation());
-		result.GetActor()->SetActorScale3D(FVector(2, 2, 2));
-		//result.GetActor()->Destroy();
+		result.GetActor()->Destroy();
+
+	}
+}
+
+void AChargeProjectile::DestroyInRadius(float radius)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, "Timer finished!", false);
+
+	FCollisionObjectQueryParams params;
+	params.AddObjectTypesToQuery(ECC_WorldDynamic);
+	params.AddObjectTypesToQuery(ECC_PhysicsBody);
+
+
+	FCollisionShape shape;
+	shape.SetSphere(radius);
+
+	TArray<FOverlapResult> overlaps;
+
+	GetWorld()->OverlapMultiByObjectType(overlaps, hitPos, FQuat::Identity, params, shape);
+
+
+
+	for (FOverlapResult result : overlaps)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, result.GetActor()->GetActorLocation());
+		result.GetActor()->Destroy();
 
 	}
 }

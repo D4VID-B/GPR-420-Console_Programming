@@ -119,10 +119,8 @@ void AFPSCharacter::CoolDown()
 	FTimerHandle RechargeTimer;
 	GetWorldTimerManager().SetTimer(RechargeTimer, this, &AFPSCharacter::ReCharge, CooldownTime);
 
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-420, CooldownTime, FColor::Yellow, TEXT("On Cooldown!"));
-	}
+	GEngine->AddOnScreenDebugMessage(-420, CooldownTime, FColor::Yellow, TEXT("On Cooldown!"));
+	
 }
 
 void AFPSCharacter::FireCharged()

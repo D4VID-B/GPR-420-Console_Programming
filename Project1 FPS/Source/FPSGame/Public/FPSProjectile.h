@@ -6,6 +6,12 @@
 #include "GameFramework/Actor.h"
 #include "FPSProjectile.generated.h"
 
+//Reference materials:
+//https://www.youtube.com/watch?v=xe7wNsxXExg&ab_channel=DevmanAndrew 
+//https://docs.unrealengine.com/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Delegates/Multicast/index.html
+
+//The idea is to use this delegate to both break up the cubes, but to also then recolor them - combining the 2 effects from the previous project
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHitDelegate);
 
 class UProjectileMovementComponent;
 class USphereComponent;
@@ -31,10 +37,14 @@ protected:
 
 	void SpawnBomb(FVector loc, FRotator rot);
 
+	UFUNCTION();
 	void SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube);
 
+	UFUNCTION();
+	void RecolorCube(UPrimitiveComponent* OtherComp);
+
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
-		UParticleSystem* CubeExplosion;
+	UParticleSystem* CubeExplosion;
 
 public:
 
@@ -49,6 +59,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Cube")
 		TSubclassOf<AMyCube> CubeClass;
+
+	FOnHitDelegate BreakAndRecolorDelegate;
+
 	/** Returns CollisionComp subobject **/
 	USphereComponent* GetCollisionComp() const { return CollisionComp; }
 

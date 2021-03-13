@@ -42,6 +42,8 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
+		RecolorCube(OtherComp);
+
 		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
 		{
 			//Delet the cube:
@@ -49,19 +51,21 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 
 			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 		}
-		else
+		/*else
 		{
 			OtherActor->Destroy();
 
 			SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
-		}
+		}*/
 
-		UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
-
-		if (inst)
-		{
-			inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
-		}
+		//Delegate Pseudocode:
+		/*
+		* If we don't need to delet the cube, then we add the split function to the delegare
+		* Then we add the recolor function to the delegate
+		* Then we fire the delegare 
+		* End result should be that the cube is split into 4 smaller cubes that are then recolored to either 4 different colors or the same color
+		* 
+		*/
 
 
 		Destroy();
@@ -92,4 +96,14 @@ void AFPSProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
 		cube->SetActorScale3D(scaleOfCube);
 	}
 
+}
+
+void AFPSProjectile::RecolorCube(UPrimitiveComponent* OtherComp)
+{
+	UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
+
+	if (inst)
+	{
+		inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
+	}
 }

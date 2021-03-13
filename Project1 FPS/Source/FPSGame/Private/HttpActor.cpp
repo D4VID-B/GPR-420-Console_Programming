@@ -53,7 +53,7 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 		TArray<TSharedPtr<FJsonValue>> objArray = obj->AsObject()->GetArrayField("periods");
 		for (int32 i = 0; i < objArray.Num(); i++)
 		{
-			FString temperature = objArray[i]->AsObject()->GetStringField(TEXT("temperature"));
+			temperature = objArray[i]->AsObject()->GetStringField(TEXT("temperature"));
 			GEngine->AddOnScreenDebugMessage(1 + i, 2.0f, FColor::Green, temperature);
 			FString windDirection = objArray[i]->AsObject()->GetStringField(TEXT("windDirection"));
 			GEngine->AddOnScreenDebugMessage(14 + i, 2.0f, FColor::Red, windDirection);

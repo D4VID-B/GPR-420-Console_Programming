@@ -21,6 +21,9 @@ protected:
 	virtual void BeginPlay() override;
 	UPROPERTY(EditDefaultsOnly, Category = "API")
 	float delay;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "API")
+	FString temperature;
+
 public:
 	/*making the api request*/
 	UFUNCTION()

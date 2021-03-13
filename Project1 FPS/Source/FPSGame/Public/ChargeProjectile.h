@@ -11,6 +11,7 @@ class USphereComponent;
 class ABombActor;
 class AMyCube;
 class UParticleSystem;
+class AHttpActor;
 
 
 UCLASS()
@@ -28,14 +29,15 @@ protected:
 	/** Sphere collision component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Projectile")
 		USphereComponent* CollisionComp;
-
+		
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "API")
+		AHttpActor* httpActor;
 	/** Projectile movement component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 		UProjectileMovementComponent* ProjectileMovement;
 
 
 	void SpawnBomb(FVector loc, FRotator rot);
-
 	void SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
@@ -53,6 +55,8 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Bomb")
 		TSubclassOf<ABombActor> BombClass;
+	UPROPERTY(EditDefaultsOnly, Category = "API")
+		TSubclassOf<AHttpActor> HttpClass;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Cube")
 		TSubclassOf<AMyCube> CubeClass;

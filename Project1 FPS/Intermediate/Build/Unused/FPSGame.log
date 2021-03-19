@@ -1,6 +1,0 @@
-﻿  Using 'git status' to determine working set for adaptive non-unity build (G:\UE4Repos\GPR-420-Console_Programming).
-  Creating makefile for FPSGameEditor (no existing makefile)
-  Parsing headers for FPSGameEditor
-    Running UnrealHeaderTool "G:\UE4Repos\GPR-420-Console_Programming\Project1 FPS\FPSGame.uproject" "G:\UE4Repos\GPR-420-Console_Programming\Project1 FPS\Intermediate\Build\Win64\FPSGameEditor\Development\FPSGameEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\bcoop\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
-G:/UE4Repos/GPR-420-Console_Programming/Project1 FPS/Source/FPSGame/Public/FPSProjectile.h(37): error : Function return type: Missing variable type
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.MakeFile.Targets(45,5): error MSB3073: The command "G:\UE_4.26\Engine\Build\BatchFiles\Build.bat FPSGameEditor Win64 Development -Project="G:\UE4Repos\GPR-420-Console_Programming\Project1 FPS\FPSGame.uproject" -WaitMutex -FromMsBuild" exited with code 6.

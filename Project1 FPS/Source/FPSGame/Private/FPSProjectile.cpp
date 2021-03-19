@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "BombActor.h"
 #include "MyCube.h"
+#include "HttpActor.h"
 
 AFPSProjectile::AFPSProjectile()
 {
@@ -32,11 +33,19 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+	
 }
 
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	AActor* FoundActor;
+	FoundActor = UGameplayStatics::GetActorOfClass(GetWorld(), HttpClass);
+	if (FoundActor)
+	{
+		httpActor = (AHttpActor*)FoundActor;
+		httpActor->GetCurrentTemp();
+	}
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{

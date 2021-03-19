@@ -7,7 +7,7 @@
 #include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "BombActor.h"
-#include "HttpActor.h"
+
 #include "MyCube.h"
 
 // Sets default values
@@ -36,13 +36,7 @@ AChargeProjectile::AChargeProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 5.0f;
-	AActor* FoundActor;
-	FoundActor = UGameplayStatics::GetActorOfClass(GetWorld(), HttpClass);
-	if (FoundActor)
-	{
-		httpActor = (AHttpActor*)FoundActor;
-		
-	}
+	
 }
 
 

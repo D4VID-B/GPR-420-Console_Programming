@@ -22,7 +22,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "API")
 	float delay;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "API")
-	FString temperature;
+		TArray<int32> TemperatureArray;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "API")
+		FString windDirection;
 
 public:
 	/*making the api request*/
@@ -30,8 +32,19 @@ public:
 	void MyHttpCall();
 	/*processing the GET request*/
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
-
+	UFUNCTION()
+		void GetCurrentTemp();
+	UFUNCTION()
+		int GetCurrentWindDirection();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+private:
+	UPROPERTY()
+		int currentTemp;
+	UPROPERTY()
+		int currentWindDirection;
+	UPROPERTY()
+		int maxTempSize;
+	UPROPERTY()
+		int maxWindDirectionSize;
 };

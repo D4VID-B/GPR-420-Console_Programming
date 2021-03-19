@@ -9,6 +9,9 @@ AHttpActor::AHttpActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	Http = &FHttpModule::Get();
+	currentTemp = 0;
+	currentWindDirection = 0;
+	
 }
 
 // Called when the game starts or when spawned
@@ -42,7 +45,6 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 {
 	//Create a pointer to hold the json serialized data
 	TSharedPtr<FJsonObject> JsonObject;
-
 	//Create a reader pointer to read the json data
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
 	//Deserialize the json data given Reader and the actual object to deserialize
@@ -53,9 +55,10 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 		TArray<TSharedPtr<FJsonValue>> objArray = obj->AsObject()->GetArrayField("periods");
 		for (int32 i = 0; i < objArray.Num(); i++)
 		{
-			temperature = objArray[i]->AsObject()->GetStringField(TEXT("temperature"));
-			GEngine->AddOnScreenDebugMessage(1 + i, 2.0f, FColor::Green, temperature);
-			FString windDirection = objArray[i]->AsObject()->GetStringField(TEXT("windDirection"));
+			TemperatureArray.Add(objArray[i]->AsObject()->GetIntegerField(TEXT("temperature")));
+			FString temperatureString = objArray[i]->AsObject()->GetStringField(TEXT("temperature"));
+			GEngine->AddOnScreenDebugMessage(1 + i, 2.0f, FColor::Green, temperatureString);
+			windDirection = objArray[i]->AsObject()->GetStringField(TEXT("windSpeed"));
 			GEngine->AddOnScreenDebugMessage(14 + i, 2.0f, FColor::Red, windDirection);
 		}
 
@@ -86,5 +89,24 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 		//Output it to the engine
 		//GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Green, objArray[0]->AsString());
 	}
+}
+
+void AHttpActor::GetCurrentTemp()
+{
+	for (int32 i = 0; i < TemperatureArray.Num(); i++)
+	{
+		FString holder;
+		holder.AppendInt(TemperatureArray[i]);
+		GEngine->AddOnScreenDebugMessage(28 + i, 2, FColor::Blue, holder);
+	}
+
+}
+
+int AHttpActor::GetCurrentWindDirection()
+{
+	int windStorage = currentWindDirection;
+	currentWindDirection++;
+
+	return windStorage;
 }
 

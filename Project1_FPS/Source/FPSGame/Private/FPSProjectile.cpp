@@ -32,15 +32,24 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
+	loc = this->GetActorLocation();
+	rot = this->GetActorRotation();
 }
 
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	BreakAndRecolorDelegate.AddDynamic(this, &AFPSProjectile::RecolorCube);
+	BreakAndRecolorDelegate.AddDynamic(this, &AFPSProjectile::SpawnCube);
+
+
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+
+		mComp = OtherComp;
 
 		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
 		{
@@ -49,20 +58,8 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 
 			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
 		}
-		else
-		{
-			OtherActor->Destroy();
 
-			SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
-		}
-
-		UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
-
-		if (inst)
-		{
-			inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
-		}
-
+		BreakAndRecolorDelegate.Broadcast();
 
 		Destroy();
 	}
@@ -73,7 +70,7 @@ void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
 	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
 }
 
-void AFPSProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
+void AFPSProjectile::SpawnCube() //Check a previous commit for how this was originally done!
 {
 	float scaleValue = 0.5f;
 	scaleOfCube = scaleOfCube.operator*= (scaleValue);
@@ -92,4 +89,18 @@ void AFPSProjectile::SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube)
 		cube->SetActorScale3D(scaleOfCube);
 	}
 
+}
+
+void AFPSProjectile::RecolorCube()
+{
+	if (mComp != NULL)
+	{
+		UMaterialInstanceDynamic* inst = mComp->CreateAndSetMaterialInstanceDynamic(0);
+
+		if (inst)
+		{
+			inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
+		}
+	}
+	
 }

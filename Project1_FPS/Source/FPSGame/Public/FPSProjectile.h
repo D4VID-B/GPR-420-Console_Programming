@@ -13,6 +13,7 @@ class ABombActor;
 class AMyCube;
 class UParticleSystem;
 
+
 UCLASS()
 class AFPSProjectile : public AActor
 {
@@ -28,17 +29,41 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 		UProjectileMovementComponent* ProjectileMovement;
 
-
+	UFUNCTION()
 	void SpawnBomb(FVector loc, FRotator rot);
 
-	void SpawnCube(FVector loc, FRotator rot, FVector scaleOfCube);
+	UFUNCTION()
+	void SpawnCube();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Explosion")
 		UParticleSystem* CubeExplosion;
 
+	//Reference materials:
+	//https://www.youtube.com/watch?v=xe7wNsxXExg&ab_channel=DevmanAndrew 
+	//https://docs.unrealengine.com/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Delegates/Multicast/index.html
+
+	//The idea is to use this delegate to both break up the cubes, but to also then recolor them - combining the 2 effects from the previous project
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHitDelegate);
+
+	//DECLARE
+
+	UPROPERTY() //BlueprintAssignable, Category = "Delegates"
+	FOnHitDelegate BreakAndRecolorDelegate;
+
+	//Delegate work-around stuff
+	UPrimitiveComponent* mComp;
+
+	FVector loc;
+	FRotator rot;
+	FVector scaleOfCube;
+
+
 public:
 
 	AFPSProjectile();
+
+	UFUNCTION()
+	void RecolorCube();
 
 	/** called when projectile hits something */
 	UFUNCTION()

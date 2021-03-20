@@ -53,6 +53,8 @@ protected:
 	//Delegate work-around stuff
 	UPrimitiveComponent* mComp;
 
+	AActor* CubeActor;
+
 	FVector loc;
 	FRotator rot;
 	FVector scaleOfCube;

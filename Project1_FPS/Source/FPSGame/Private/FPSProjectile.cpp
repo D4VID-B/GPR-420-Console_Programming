@@ -33,8 +33,6 @@ AFPSProjectile::AFPSProjectile()
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
 
-	loc = this->GetActorLocation();
-	rot = this->GetActorRotation();
 }
 
 
@@ -51,14 +49,9 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 
 		mComp = OtherComp;
 
-		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
-		{
-			//Delet the cube:
-			OtherActor->Destroy();
-
-			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
-		}
-
+		CubeActor = OtherActor;
+		
+		//SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
 		BreakAndRecolorDelegate.Broadcast();
 
 		Destroy();
@@ -73,7 +66,13 @@ void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
 void AFPSProjectile::SpawnCube() //Check a previous commit for how this was originally done!
 {
 	float scaleValue = 0.5f;
+
+	loc = CubeActor->GetActorLocation();
+	rot = CubeActor->GetActorRotation();
+	scaleOfCube = CubeActor->GetActorScale();
+
 	scaleOfCube = scaleOfCube.operator*= (scaleValue);
+
 	FVector newLoc = loc;
 
 	for (int i = 0; i < 4; i++)
@@ -85,6 +84,7 @@ void AFPSProjectile::SpawnCube() //Check a previous commit for how this was orig
 			float newZ = loc.Z + (25.0 * i);
 			newLoc = FVector(newX, newY, newZ);
 		}
+		//CubeActor->Destroy();
 		AMyCube* cube = GetWorld()->SpawnActor<AMyCube>(CubeClass, newLoc, rot);
 		cube->SetActorScale3D(scaleOfCube);
 	}

@@ -38,35 +38,40 @@ AFPSProjectile::AFPSProjectile()
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	//We recolor the original cube and then also spawn 4 more
 	BreakAndRecolorDelegate.AddDynamic(this, &AFPSProjectile::RecolorCube);
 	BreakAndRecolorDelegate.AddDynamic(this, &AFPSProjectile::SpawnCube);
 
 
-	// Only add impulse and destroy projectile if we hit a physics
+	// Only add impulse and destroy projectile if we hit a cube
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 
+		//Used to recolor the hit cube
 		mComp = OtherComp;
 
+		//Store a reference to the cube we just hit for later use
 		CubeActor = OtherActor;
 		
-		//SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
 		BreakAndRecolorDelegate.Broadcast();
 
 		Destroy();
 	}
 }
 
+//Not used in current iteration
 void AFPSProjectile::SpawnBomb(FVector loc, FRotator rot)
 {
 	ABombActor* bomb = GetWorld()->SpawnActor<ABombActor>(BombClass, loc, rot);
 }
 
-void AFPSProjectile::SpawnCube() //Check a previous commit for how this was originally done!
+
+void AFPSProjectile::SpawnCube()
 {
 	float scaleValue = 0.5f;
 
+	//Use the CubeActor to set the location/rotation/scale values
 	loc = CubeActor->GetActorLocation();
 	rot = CubeActor->GetActorRotation();
 	scaleOfCube = CubeActor->GetActorScale();

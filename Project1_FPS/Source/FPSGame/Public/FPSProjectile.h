@@ -29,9 +29,13 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 		UProjectileMovementComponent* ProjectileMovement;
 
+
+	/** Spawn a bomb at the given location & rotation */
 	UFUNCTION()
 	void SpawnBomb(FVector loc, FRotator rot);
 
+
+	/** Spawn 4 new cubes that are .5 the size of the original in the location of the original */
 	UFUNCTION()
 	void SpawnCube();
 
@@ -64,6 +68,7 @@ public:
 
 	AFPSProjectile();
 
+	/** Change the color of the cube to a random one */
 	UFUNCTION()
 	void RecolorCube();
 

@@ -2,7 +2,8 @@
 
 
 #include "HttpActor.h"
-
+#include <iostream>
+#include <sstream>
 // Sets default values
 AHttpActor::AHttpActor()
 {
@@ -10,7 +11,7 @@ AHttpActor::AHttpActor()
 	PrimaryActorTick.bCanEverTick = true;
 	Http = &FHttpModule::Get();
 	currentTemp = 0;
-	currentWindDirection = 0;
+	currentWindSpeed = 0;
 	
 }
 
@@ -58,11 +59,16 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 			TemperatureArray.Add(objArray[i]->AsObject()->GetIntegerField(TEXT("temperature")));
 			FString temperatureString = objArray[i]->AsObject()->GetStringField(TEXT("temperature"));
 			GEngine->AddOnScreenDebugMessage(1 + i, 2.0f, FColor::Green, temperatureString);
-			windDirection = objArray[i]->AsObject()->GetStringField(TEXT("windSpeed"));
+			FString windDirection = objArray[i]->AsObject()->GetStringField(TEXT("windSpeed"));
+			std::istringstream tmp = std::istringstream(TCHAR_TO_UTF8(*windDirection));
+			int storage;
+			tmp >> storage;
+			WindSpeedArray.Add(int32(storage));
 			GEngine->AddOnScreenDebugMessage(14 + i, 2.0f, FColor::Red, windDirection);
 		}
 
-		
+		maxTempSize = TemperatureArray.Num();
+		maxWindSpeedSize = WindSpeedArray.Num();
 		
 		/*if (JsonObject->TryGetField("properties"))
 		{
@@ -91,22 +97,38 @@ void AHttpActor::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Re
 	}
 }
 
-void AHttpActor::GetCurrentTemp()
+int AHttpActor::GetCurrentTemp()
 {
-	for (int32 i = 0; i < TemperatureArray.Num(); i++)
+	/*for (int32 i = 0; i < TemperatureArray.Num(); i++)
 	{
 		FString holder;
 		holder.AppendInt(TemperatureArray[i]);
 		GEngine->AddOnScreenDebugMessage(28 + i, 2, FColor::Blue, holder);
+	}*/
+	if (currentTemp == maxTempSize-1)
+	{
+		currentTemp = 0;
+		return TemperatureArray[currentTemp];
+	}
+	else
+	{
+		currentTemp++;
+		return TemperatureArray[currentTemp];
 	}
 
 }
 
-int AHttpActor::GetCurrentWindDirection()
+int AHttpActor::GetCurrentWindSpeed()
 {
-	int windStorage = currentWindDirection;
-	currentWindDirection++;
-
-	return windStorage;
+	if (currentWindSpeed == maxWindSpeedSize - 1)
+	{
+		currentWindSpeed = 0;
+		return WindSpeedArray[currentWindSpeed];
+	}
+	else
+	{
+		currentWindSpeed++;
+		return WindSpeedArray[currentWindSpeed];
+	}
 }
 

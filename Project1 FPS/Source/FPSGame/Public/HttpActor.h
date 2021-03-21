@@ -7,6 +7,7 @@
 #include "Runtime/Online/HTTP/Public/Http.h"
 #include "HttpActor.generated.h"
 
+
 UCLASS()
 class FPSGAME_API AHttpActor : public AActor
 {
@@ -24,7 +25,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "API")
 		TArray<int32> TemperatureArray;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "API")
-		FString windDirection;
+		TArray<int32> WindSpeedArray;
 
 public:
 	/*making the api request*/
@@ -33,18 +34,18 @@ public:
 	/*processing the GET request*/
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 	UFUNCTION()
-		void GetCurrentTemp();
+		int GetCurrentTemp();
 	UFUNCTION()
-		int GetCurrentWindDirection();
+		int GetCurrentWindSpeed();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 private:
 	UPROPERTY()
 		int currentTemp;
 	UPROPERTY()
-		int currentWindDirection;
+		int currentWindSpeed;
 	UPROPERTY()
 		int maxTempSize;
 	UPROPERTY()
-		int maxWindDirectionSize;
+		int maxWindSpeedSize;
 };

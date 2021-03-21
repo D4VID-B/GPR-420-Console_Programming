@@ -21,6 +21,7 @@ class AFPSProjectile : public AActor
 
 protected:
 
+	virtual void BeginPlay() override;
 	/** Sphere collision component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Projectile")
 		USphereComponent* CollisionComp;
@@ -59,5 +60,11 @@ public:
 
 	/** Returns ProjectileMovement subobject **/
 	UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
+
+private:
+	UPROPERTY()
+		int tempValue;
+	UPROPERTY()
+		int windValue;
 };
 

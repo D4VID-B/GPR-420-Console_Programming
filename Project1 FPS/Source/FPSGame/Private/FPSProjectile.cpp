@@ -23,11 +23,20 @@ AFPSProjectile::AFPSProjectile()
 	// Set as root component
 	RootComponent = CollisionComp;
 
+
+	/*AActor* FoundActor;
+	FoundActor = UGameplayStatics::GetActorOfClass(GetWorld(), HttpClass);
+	if (FoundActor)
+	{
+		httpActor = (AHttpActor*)FoundActor;
+		httpActor->MyHttpCall();
+		windValue = httpActor->GetCurrentWindSpeed();
+	}*/
 	// Use a ProjectileMovementComponent to govern this projectile's movement
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileComp"));
 	ProjectileMovement->UpdatedComponent = CollisionComp;
-	ProjectileMovement->InitialSpeed = 3000.f;
-	ProjectileMovement->MaxSpeed = 3000.f;
+	ProjectileMovement->InitialSpeed = 1500.0f;
+	ProjectileMovement->MaxSpeed = 5000.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = true;
 
@@ -36,6 +45,22 @@ AFPSProjectile::AFPSProjectile()
 	
 }
 
+void AFPSProjectile::BeginPlay()
+{
+	AActor* FoundActor;
+	FoundActor = UGameplayStatics::GetActorOfClass(GetWorld(), HttpClass);
+	if (FoundActor)
+	{
+		httpActor = (AHttpActor*)FoundActor;
+		windValue = httpActor->GetCurrentWindSpeed();
+	}
+	FVector test = FVector(RootComponent->ComponentVelocity.X + (float)windValue * 250.0f, RootComponent->ComponentVelocity.Y, RootComponent->ComponentVelocity.Z);
+	//CollisionComp->AddImpulse(test, NAME_None);
+	//RootComponent->ComponentVelocity = RootComponent->ComponentVelocity + test;
+	ProjectileMovement->SetVelocityInLocalSpace(test);
+	//ProjectileMovement->ComputeAcceleration(test, 0.5f);
+	Super::BeginPlay();
+}
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
@@ -44,7 +69,7 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	if (FoundActor)
 	{
 		httpActor = (AHttpActor*)FoundActor;
-		httpActor->GetCurrentTemp();
+		tempValue = httpActor->GetCurrentTemp();
 	}
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
@@ -63,26 +88,26 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		* }
 		*/
 
-		if (OtherComp->GetComponentScale().GetMin() < 1.26f)
-		{
-			//Delet the cube:
-			OtherActor->Destroy();
+		//if (OtherComp->GetComponentScale().GetMin() < 1.26f)
+		//{
+		//	//Delet the cube:
+		//	OtherActor->Destroy();
 
-			UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
-		}
-		else
-		{
-			//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
-			OtherActor->Destroy();
+		//	UGameplayStatics::SpawnEmitterAtLocation(this, CubeExplosion, OtherActor->GetActorLocation());
+		//}
+		//else
+		//{
+		//	//OtherComp->SetWorldScale3D(OtherComp->GetComponentScale() * 0.8f);
+		//	OtherActor->Destroy();
 
-			SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
-		}
+		//	SpawnCube(OtherActor->GetActorLocation(), OtherActor->GetActorRotation(), OtherActor->GetActorScale());
+		//}
 
 		UMaterialInstanceDynamic* inst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
 
 		if (inst)
 		{
-			inst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
+			inst->SetVectorParameterValue("Color", FLinearColor(0.75f, (float)(tempValue*0.005f),0.25f,1.0f));
 		}
 
 

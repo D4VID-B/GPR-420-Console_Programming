@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "TopDownShooter",
+			"Path": "C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "TopDownShooterEditor",
+			"Path": "C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooterEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

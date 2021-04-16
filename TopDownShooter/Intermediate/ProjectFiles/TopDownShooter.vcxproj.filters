@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\TopDownShooter.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{44ABCE07-B855-4D62-9C40-37673706BB87}</UniqueIdentifier>
+      <UniqueIdentifier>{12BB1975-C311-4481-A53C-8363C5538D8C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{5A7B0AD7-574D-4148-87BA-90E556DCE550}</UniqueIdentifier>
+      <UniqueIdentifier>{CC5E6EA4-7DAC-475B-9858-E4EE8BE7DC0A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -23,8 +23,11 @@
     <None Include="..\..\Config\DefaultGame.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
     <Filter Include="Source\TopDownShooter">
-      <UniqueIdentifier>{1AB23FA3-EAC6-4308-97B3-65916F14D43A}</UniqueIdentifier>
+      <UniqueIdentifier>{95B058B4-6B2D-447E-8587-660D239A8641}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter\TopDownShooter.Build.cs">
       <Filter>Source\TopDownShooter</Filter>

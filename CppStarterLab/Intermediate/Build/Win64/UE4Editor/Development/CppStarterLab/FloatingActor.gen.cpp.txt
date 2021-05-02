@@ -1,6 +1,0 @@
-D:\GPR-420-Console_Programming\CppStarterLab\Intermediate\Build\Win64\UE4Editor\Development\CppStarterLab\Definitions.CppStarterLab.h
-D:\_Program-Files(D)\Unreal-Engine\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-D:\_Program-Files(D)\Unreal-Engine\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-D:\GPR-420-Console_Programming\CppStarterLab\Source\CppStarterLab/FloatingActor.h
-C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\math.h
-D:\GPR-420-Console_Programming\CppStarterLab\Intermediate\Build\Win64\UE4Editor\Inc\CppStarterLab\FloatingActor.generated.h

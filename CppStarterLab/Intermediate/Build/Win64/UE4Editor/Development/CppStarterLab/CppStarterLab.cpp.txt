@@ -1,2 +1,0 @@
-D:\GPR-420-Console_Programming\CppStarterLab\Intermediate\Build\Win64\UE4Editor\Development\CppStarterLab\Definitions.CppStarterLab.h
-D:\GPR-420-Console_Programming\CppStarterLab\Source\CppStarterLab\CppStarterLab.h

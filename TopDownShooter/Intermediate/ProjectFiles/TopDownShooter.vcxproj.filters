@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\TopDownShooter.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{12BB1975-C311-4481-A53C-8363C5538D8C}</UniqueIdentifier>
+      <UniqueIdentifier>{C57823A4-CE62-498A-BE8E-FBB3C3213ED3}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{CC5E6EA4-7DAC-475B-9858-E4EE8BE7DC0A}</UniqueIdentifier>
+      <UniqueIdentifier>{BB037C8B-2619-43AA-841F-3B00BACF56E4}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,8 +27,26 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\TopDownShooter">
-      <UniqueIdentifier>{95B058B4-6B2D-447E-8587-660D239A8641}</UniqueIdentifier>
+      <UniqueIdentifier>{A1153272-6EC5-4B98-8FB3-5F9C5E6BE7AC}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\TopDownShooter\MyBlueprintFunctionLibrary.cpp">
+      <Filter>Source\TopDownShooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TopDownShooter\MyBlueprintFunctionLibrary.h">
+      <Filter>Source\TopDownShooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\TopDownShooter\MySaveGame.cpp">
+      <Filter>Source\TopDownShooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TopDownShooter\MySaveGame.h">
+      <Filter>Source\TopDownShooter</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\TopDownShooter\MyStruct.cpp">
+      <Filter>Source\TopDownShooter</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TopDownShooter\MyStruct.h">
+      <Filter>Source\TopDownShooter</Filter>
+    </ClInclude>
     <None Include="..\..\Source\TopDownShooter\TopDownShooter.Build.cs">
       <Filter>Source\TopDownShooter</Filter>
     </None>

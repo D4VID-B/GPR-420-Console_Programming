@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\TopDownShooter.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{12BB1975-C311-4481-A53C-8363C5538D8C}</UniqueIdentifier>
+      <UniqueIdentifier>{EA6B3ECA-5ABD-40F9-9C8E-E35D78D12DBB}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{CC5E6EA4-7DAC-475B-9858-E4EE8BE7DC0A}</UniqueIdentifier>
+      <UniqueIdentifier>{C696ECCE-9DDE-4E67-9322-A34AA1571B1B}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,7 +27,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\TopDownShooter">
-      <UniqueIdentifier>{95B058B4-6B2D-447E-8587-660D239A8641}</UniqueIdentifier>
+      <UniqueIdentifier>{EA9F23FC-A004-41BD-A3DC-B3B8A681A711}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter\TopDownShooter.Build.cs">
       <Filter>Source\TopDownShooter</Filter>
@@ -43,6 +43,24 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\TopDownShooter\TopDownShooterGameModeBase.h">
       <Filter>Source\TopDownShooter</Filter>
+    </ClInclude>
+    <Filter Include="Source\TopDownShooter\Private">
+      <UniqueIdentifier>{F88AB465-62B9-4EC5-AFBD-3D43651297E0}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TopDownShooter\Private\TDSGPlayerCharacter.cpp">
+      <Filter>Source\TopDownShooter\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TopDownShooter\Private\TDSGPlayerController.cpp">
+      <Filter>Source\TopDownShooter\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\TopDownShooter\Public">
+      <UniqueIdentifier>{8A7F26B2-FFAB-47AC-BDFC-90B897D68C84}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\TopDownShooter\Public\TDSGPlayerCharacter.h">
+      <Filter>Source\TopDownShooter\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TopDownShooter\Public\TDSGPlayerController.h">
+      <Filter>Source\TopDownShooter\Public</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

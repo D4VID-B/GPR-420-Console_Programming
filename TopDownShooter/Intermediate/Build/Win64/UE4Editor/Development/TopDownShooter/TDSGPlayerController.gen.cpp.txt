@@ -1,0 +1,5 @@
+C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\Definitions.TopDownShooter.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Source\TopDownShooter/Public/TDSGPlayerController.h
+C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter\TDSGPlayerController.generated.h

@@ -1,5 +1,5 @@
-G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\Definitions.TopDownShooter.h
-G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Source\TopDownShooter\MySaveGame.h
-G:\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/SaveGame.h
-G:\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SaveGame.generated.h
-G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter\MySaveGame.generated.h
+C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\Definitions.TopDownShooter.h
+C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Source\TopDownShooter\MySaveGame.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/SaveGame.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SaveGame.generated.h
+C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter\MySaveGame.generated.h

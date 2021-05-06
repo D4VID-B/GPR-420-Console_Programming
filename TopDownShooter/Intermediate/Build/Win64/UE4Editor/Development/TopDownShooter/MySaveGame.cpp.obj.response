@@ -230,8 +230,8 @@
 /I Editor\Kismet\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
-/I G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter
-/I G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Source
+/I C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter
+/I C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Source
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -256,17 +256,17 @@
 /I ThirdParty\PhysX3\APEX_1.4\shared\general\PairFilter\include
 /I ThirdParty\PhysX3\APEX_1.4\shared\internal\include
 /I "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\INCLUDE"
-/I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.2\include\um"
+/I "C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"
-/FI"G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Source\TopDownShooter\MySaveGame.cpp"
-/FI"G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\Definitions.TopDownShooter.h"
-/Fo"G:\UE4Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\MySaveGame.cpp.obj"
+/FI"C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Yu"C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Source\TopDownShooter\MySaveGame.cpp"
+/FI"C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\Definitions.TopDownShooter.h"
+/Fo"C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\MySaveGame.cpp.obj"
 /TP
 /GR-
 /W4

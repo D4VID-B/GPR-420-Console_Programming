@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"G:\\UE4Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter\\TopDownShooter.Build.cs",
-		"G:\\UE4Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter.Target.cs",
-		"G:\\UE4Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooterEditor.Target.cs"
+		"C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter\\TopDownShooter.Build.cs",
+		"C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter.Target.cs",
+		"C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooterEditor.Target.cs"
 	],
-	"EngineVersion": "4.26.1"
+	"EngineVersion": "4.26.2"
 }

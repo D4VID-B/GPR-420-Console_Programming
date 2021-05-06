@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "TopDownShooter",
-			"Path": "G:\\UE4Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter.Target.cs",
+			"Path": "C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooter.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "TopDownShooterEditor",
-			"Path": "G:\\UE4Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooterEditor.Target.cs",
+			"Path": "C:\\Users\\david\\Desktop\\Repos\\GPR-420-Console_Programming\\TopDownShooter\\Source\\TopDownShooterEditor.Target.cs",
 			"Type": "Editor"
 		}
 	]

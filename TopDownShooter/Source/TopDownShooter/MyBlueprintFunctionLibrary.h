@@ -16,10 +16,8 @@ class TOPDOWNSHOOTER_API UMyBlueprintFunctionLibrary : public UBlueprintFunction
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(BlueprintReadWrite, Category = "Save");
-	UMySaveGame* SaveGameObject;
 	UFUNCTION(BlueprintCallable, Category = "Game Manager")
-	void SaveGame();
+	static void SaveMyGame(UMySaveGame* MySaveGame);
 	UFUNCTION(BlueprintCallable, Category = "Game Manager")
-	void LoadGame();
+	static UMySaveGame* LoadMyGame();
 };

@@ -8,6 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UMySaveGame;
 #ifdef TOPDOWNSHOOTER_MyBlueprintFunctionLibrary_generated_h
 #error "MyBlueprintFunctionLibrary.generated.h already included, missing '#pragma once' in MyBlueprintFunctionLibrary.h"
 #endif
@@ -16,14 +17,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define TopDownShooter_Source_TopDownShooter_MyBlueprintFunctionLibrary_h_17_SPARSE_DATA
 #define TopDownShooter_Source_TopDownShooter_MyBlueprintFunctionLibrary_h_17_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execLoadGame); \
-	DECLARE_FUNCTION(execSaveGame);
+	DECLARE_FUNCTION(execLoadMyGame); \
+	DECLARE_FUNCTION(execSaveMyGame);
 
 
 #define TopDownShooter_Source_TopDownShooter_MyBlueprintFunctionLibrary_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execLoadGame); \
-	DECLARE_FUNCTION(execSaveGame);
+	DECLARE_FUNCTION(execLoadMyGame); \
+	DECLARE_FUNCTION(execSaveMyGame);
 
 
 #define TopDownShooter_Source_TopDownShooter_MyBlueprintFunctionLibrary_h_17_INCLASS_NO_PURE_DECLS \

@@ -3,11 +3,11 @@
 
 #include "MyBlueprintFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
-void UMyBlueprintFunctionLibrary::SaveGame()
+void UMyBlueprintFunctionLibrary::SaveMyGame(UMySaveGame* MySaveGame)
 {
-	UGameplayStatics::SaveGameToSlot(SaveGameObject, "scoreSave", 0);
+	UGameplayStatics::SaveGameToSlot(MySaveGame, "scoreSave", 0);
 }
-void UMyBlueprintFunctionLibrary::LoadGame()
+UMySaveGame* UMyBlueprintFunctionLibrary::LoadMyGame()
 {
-	UGameplayStatics::LoadGameFromSlot("scoreSave", 0);
+	return (UMySaveGame*)UGameplayStatics::LoadGameFromSlot("scoreSave", 0);
 }

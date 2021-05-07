@@ -1,3 +1,18 @@
 ﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\david\Desktop\Repos\GPR-420-Console_Programming).
-  Target is up to date
-  Total execution time: 0.71 seconds
+  Deleted hot-reload file: C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Binaries\Win64\UE4Editor-TopDownShooter-0001.dll
+  Deleted hot-reload file: C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Binaries\Win64\UE4Editor-TopDownShooter-0002.dll
+  Deleted hot-reload file: C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Binaries\Win64\UE4Editor-TopDownShooter-0003.dll
+  Deleted hot-reload file: C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0001.lib
+  Deleted hot-reload file: C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0002.lib
+  Deleted hot-reload file: C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0003.lib
+  Building TopDownShooterEditor...
+  Using Visual Studio 2019 14.28.29913 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 4 actions with 8 processes...
+    [1/4] TDSGPlayerController.cpp
+    [2/4] UE4Editor-TopDownShooter.lib
+       Creating library C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter.lib and object C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter.exp
+    [3/4] UE4Editor-TopDownShooter.dll
+       Creating library C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter.suppressed.lib and object C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter.suppressed.exp
+    [4/4] TopDownShooterEditor.target
+  Total time in Parallel executor: 1.77 seconds
+  Total execution time: 2.58 seconds

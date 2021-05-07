@@ -2,4 +2,10 @@ C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermed
 C:\UE4\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\UE4\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
 C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Source\TopDownShooter/Public/TDSGPlayerController.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
 C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter\TDSGPlayerController.generated.h

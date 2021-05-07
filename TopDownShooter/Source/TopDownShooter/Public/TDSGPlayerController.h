@@ -4,7 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "GameFramework/Character.h"
 #include "TDSGPlayerController.generated.h"
+
+class UCharacterMovementComponent;
+
 
 /**
  * 
@@ -19,6 +23,9 @@ protected:
 
 	float mSprintSpeed;
 
+	bool isSprinting;
+
+	float defaultSpeed;
 	//virtual void SetupInputComponent() override;
 
 	//void MoveForward(float amount);
@@ -36,5 +43,14 @@ public:
 		float getSprintSpeed();
 
 	UFUNCTION(BlueprintCallable)
-		void doSprint(float currentSpeed, UPlayer playerChar);
+		void setIsSprinting(bool status);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+		bool getIsSprinting();
+
+	UFUNCTION(BlueprintCallable)
+		void doSprint(float currentSpeed, UCharacterMovementComponent* playerChar);
+
+	UFUNCTION(BlueprintCallable)
+		void setDefaultSpeed(UCharacterMovementComponent* playerChar);
 };

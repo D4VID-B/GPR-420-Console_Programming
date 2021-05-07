@@ -2,11 +2,14 @@
 
 
 #include "TDSGPlayerController.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 ATDSGPlayerController::ATDSGPlayerController(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 {
 	mSprintSpeed = 2.0f;
+
+	isSprinting = false;
 }
 
 float ATDSGPlayerController::getSprintSpeed()
@@ -19,9 +22,33 @@ void ATDSGPlayerController::setSprintSpeed(float newSpeed)
 	mSprintSpeed = newSpeed;
 }
 
-void ATDSGPlayerController::doSprint(float currentSpeed, UPlayer playerChar)
+bool ATDSGPlayerController::getIsSprinting()
 {
-	
+	return isSprinting;
+}
+
+void ATDSGPlayerController::setIsSprinting(bool status)
+{
+	isSprinting = status;
+}
+
+void ATDSGPlayerController::doSprint(float currentSpeed, UCharacterMovementComponent* playerChar)
+{
+	if (isSprinting)
+	{
+		playerChar->MaxWalkSpeed = defaultSpeed * mSprintSpeed;
+	}
+	else
+	{
+		playerChar->MaxWalkSpeed = defaultSpeed;
+	}
+
+
+}
+
+void ATDSGPlayerController::setDefaultSpeed(UCharacterMovementComponent* playerChar)
+{
+	defaultSpeed = playerChar->MaxWalkSpeed;
 }
 
 //void ATDSGPlayerController::SetupInputComponent()

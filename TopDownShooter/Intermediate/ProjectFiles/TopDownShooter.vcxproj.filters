@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\TopDownShooter.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{715747A9-5F29-48C5-8DE9-34206084C3A5}</UniqueIdentifier>
+      <UniqueIdentifier>{47115671-7B5C-4C7C-B2B4-CF7299D8F20A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{5CC3D059-7272-434B-8B7F-84180068C83E}</UniqueIdentifier>
+      <UniqueIdentifier>{9795392E-4A7D-4C3F-8135-033926473982}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,7 +27,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\TopDownShooter">
-      <UniqueIdentifier>{D384413C-9735-43FF-B57E-83673533C1D1}</UniqueIdentifier>
+      <UniqueIdentifier>{F28E5862-9891-4D84-8BDE-C1AD50E011F6}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\TopDownShooter\TopDownShooter.Build.cs">
       <Filter>Source\TopDownShooter</Filter>
@@ -45,7 +45,7 @@
       <Filter>Source\TopDownShooter</Filter>
     </ClInclude>
     <Filter Include="Source\TopDownShooter\Private">
-      <UniqueIdentifier>{C550EFD6-A8E8-40F6-ACCB-D8ADBCB75B74}</UniqueIdentifier>
+      <UniqueIdentifier>{7EFC2A62-BC9F-4F68-A9B2-119BE7CCF08D}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\TopDownShooter\Private\TDSGPlayerCharacter.cpp">
       <Filter>Source\TopDownShooter\Private</Filter>
@@ -54,7 +54,7 @@
       <Filter>Source\TopDownShooter\Private</Filter>
     </ClCompile>
     <Filter Include="Source\TopDownShooter\Public">
-      <UniqueIdentifier>{3DBEB107-6EBD-4822-B924-C5C67EF2350A}</UniqueIdentifier>
+      <UniqueIdentifier>{3D54956D-7C67-4A26-83CB-6DCF8E5367F4}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\TopDownShooter\Public\TDSGPlayerCharacter.h">
       <Filter>Source\TopDownShooter\Public</Filter>

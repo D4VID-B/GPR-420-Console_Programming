@@ -1,20 +1,3 @@
 ﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\david\Desktop\Repos\GPR-420-Console_Programming).
-  Creating makefile for TopDownShooterEditor (no existing makefile)
-  Parsing headers for TopDownShooterEditor
-    Running UnrealHeaderTool "C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\TopDownShooter.uproject" "C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\TopDownShooterEditor\Development\TopDownShooterEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\david\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
-  Reflection code generated for TopDownShooterEditor in 13.0193951 seconds
-  Building TopDownShooterEditor...
-  Using Visual Studio 2019 14.28.29913 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
-  Building 8 actions with 8 processes...
-    [1/8] TopDownShooter.init.gen.cpp
-    [2/8] TDSGPlayerCharacter.cpp
-    [3/8] TDSGPlayerController.gen.cpp
-    [4/8] TDSGPlayerCharacter.gen.cpp
-    [5/8] TDSGPlayerController.cpp
-    [6/8] UE4Editor-TopDownShooter-0001.lib
-       Creating library C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0001.lib and object C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0001.exp
-    [7/8] UE4Editor-TopDownShooter-0001.dll
-       Creating library C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0001.suppressed.lib and object C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Development\TopDownShooter\UE4Editor-TopDownShooter-0001.suppressed.exp
-    [8/8] TopDownShooterEditor.target
-  Total time in Parallel executor: 13.49 seconds
-  Total execution time: 32.10 seconds
+  Target is up to date
+  Total execution time: 0.71 seconds

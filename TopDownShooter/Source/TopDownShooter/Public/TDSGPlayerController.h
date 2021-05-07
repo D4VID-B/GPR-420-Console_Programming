@@ -13,16 +13,28 @@ UCLASS()
 class TOPDOWNSHOOTER_API ATDSGPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+
+
 protected:
 
 	float mSprintSpeed;
 
+	//virtual void SetupInputComponent() override;
+
+	//void MoveForward(float amount);
+
+	//void MoveRight(float amount);
+
 public:
+
+	ATDSGPlayerController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 	UFUNCTION(BlueprintCallable)
 		void setSprintSpeed(float newSpeed);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, BlueprintPure)
 		float getSprintSpeed();
+
+	UFUNCTION(BlueprintCallable)
+		void doSprint(float currentSpeed, UPlayer playerChar);
 };

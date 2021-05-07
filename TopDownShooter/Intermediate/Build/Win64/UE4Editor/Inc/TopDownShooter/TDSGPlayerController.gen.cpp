@@ -64,7 +64,7 @@ void EmptyLinkFunctionForGeneratedCodeTDSGPlayerController() {}
 		{ "ModuleRelativePath", "Public/TDSGPlayerController.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ATDSGPlayerController, nullptr, "getSprintSpeed", nullptr, nullptr, sizeof(TDSGPlayerController_eventgetSprintSpeed_Parms), Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::Function_MetaDataParams)) };
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ATDSGPlayerController, nullptr, "getSprintSpeed", nullptr, nullptr, sizeof(TDSGPlayerController_eventgetSprintSpeed_Parms), Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed_Statics::Function_MetaDataParams)) };
 	UFunction* Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -125,7 +125,7 @@ void EmptyLinkFunctionForGeneratedCodeTDSGPlayerController() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_TopDownShooter,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_ATDSGPlayerController_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed, "getSprintSpeed" }, // 3862266106
+		{ &Z_Construct_UFunction_ATDSGPlayerController_getSprintSpeed, "getSprintSpeed" }, // 3695860728
 		{ &Z_Construct_UFunction_ATDSGPlayerController_setSprintSpeed, "setSprintSpeed" }, // 1883729584
 	};
 #if WITH_METADATA
@@ -134,6 +134,7 @@ void EmptyLinkFunctionForGeneratedCodeTDSGPlayerController() {}
 		{ "HideCategories", "Collision Rendering Utilities|Transformation" },
 		{ "IncludePath", "TDSGPlayerController.h" },
 		{ "ModuleRelativePath", "Public/TDSGPlayerController.h" },
+		{ "ObjectInitializerConstructorDeclared", "" },
 	};
 #endif
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ATDSGPlayerController_Statics::StaticCppClassTypeInfo = {
@@ -163,7 +164,7 @@ void EmptyLinkFunctionForGeneratedCodeTDSGPlayerController() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ATDSGPlayerController, 2356344783);
+	IMPLEMENT_CLASS(ATDSGPlayerController, 3914359631);
 	template<> TOPDOWNSHOOTER_API UClass* StaticClass<ATDSGPlayerController>()
 	{
 		return ATDSGPlayerController::StaticClass();

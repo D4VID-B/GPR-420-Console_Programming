@@ -3,3 +3,12 @@
 
 #include "TDSGPlayerController.h"
 
+float ATDSGPlayerController::getSprintSpeed()
+{
+	return mSprintSpeed;
+}
+
+void ATDSGPlayerController::setSprintSpeed(float newSpeed)
+{
+	mSprintSpeed = newSpeed;
+}

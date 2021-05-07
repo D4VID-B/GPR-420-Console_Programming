@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Runtime/Engine/Classes/Camera/CameraComponent.h"
+#include "Runtime/Engine/Classes/Components/CapsuleComponent.h"
 #include "TDSGPlayerCharacter.generated.h"
 
 UCLASS()

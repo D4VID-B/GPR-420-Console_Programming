@@ -6,4 +6,10 @@ C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMov
 C:\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
 C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
 C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+C:\UE4\UE_4.26\Engine\Source\Runtime/Engine/Classes/Camera/CameraComponent.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CameraComponent.generated.h
+C:\UE4\UE_4.26\Engine\Source\Runtime/Engine/Classes/Components/CapsuleComponent.h
+C:\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
+C:\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CapsuleComponent.generated.h
 C:\Users\david\Desktop\Repos\GPR-420-Console_Programming\TopDownShooter\Intermediate\Build\Win64\UE4Editor\Inc\TopDownShooter\TDSGPlayerCharacter.generated.h

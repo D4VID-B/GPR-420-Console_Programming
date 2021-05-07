@@ -14,4 +14,15 @@ class TOPDOWNSHOOTER_API ATDSGPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+protected:
+
+	float mSprintSpeed;
+
+public:
+
+	UFUNCTION(BlueprintCallable)
+		void setSprintSpeed(float newSpeed);
+
+	UFUNCTION(BlueprintCallable)
+		float getSprintSpeed();
 };

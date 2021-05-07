@@ -14,8 +14,18 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define TOPDOWNSHOOTER_TDSGPlayerController_generated_h
 
 #define TopDownShooter_Source_TopDownShooter_Public_TDSGPlayerController_h_15_SPARSE_DATA
-#define TopDownShooter_Source_TopDownShooter_Public_TDSGPlayerController_h_15_RPC_WRAPPERS
-#define TopDownShooter_Source_TopDownShooter_Public_TDSGPlayerController_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define TopDownShooter_Source_TopDownShooter_Public_TDSGPlayerController_h_15_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execgetSprintSpeed); \
+	DECLARE_FUNCTION(execsetSprintSpeed);
+
+
+#define TopDownShooter_Source_TopDownShooter_Public_TDSGPlayerController_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execgetSprintSpeed); \
+	DECLARE_FUNCTION(execsetSprintSpeed);
+
+
 #define TopDownShooter_Source_TopDownShooter_Public_TDSGPlayerController_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesATDSGPlayerController(); \
